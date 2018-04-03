@@ -1,0 +1,22 @@
+version: "3"
+services:
+  web:
+    restart: always
+    build: app
+    container_name: flask-app
+    # Setup required parameters for Coralogix integration
+    environment:
+      - PRIVATE_KEY=${PRIVATE_KEY}
+      - APP_NAME=${APP_NAME:-flask-app}
+      - SUB_NAME=${SUB_NAME:-backend}
+      - COMPANY_ID=${COMPANY_ID}
+    # Setup logging driver
+    logging:
+      driver: gelf
+      options:
+        # Address of Coralogix syslog server
+        gelf-address: "udp://syslogserver.coralogix.com:20001"
+        # Required parameters for request
+        env: "PRIVATE_KEY,APP_NAME,SUB_NAME,COMPANY_ID"
+    ports:
+      - "5000:5000"
