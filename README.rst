@@ -62,4 +62,4 @@ Before usage you must create **.env** file with configurations or write them dir
 Example application:
 --------------------
 
-You can try to deploy out example application: `Source code <https://github.com/coralogix/docker-gelf-example>`_.
+You can try to deploy our example application: `Source code <https://github.com/coralogix/docker-gelf-example>`_.
